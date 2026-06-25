@@ -1,0 +1,37 @@
+---
+title: "Rapport d'analyse - Protection des plantes"
+author: Kakou-Anini Tano
+date: 25 juin 2026
+output: word_document
+---
+
+# Introduction
+
+La protection des cultures contre les bioagresseurs est un enjeu majeur pour garantir la productivité agricole.  
+Ce projet vise à analyser les données collectées sur les bioagresseurs, les traitements appliqués et les observations de terrain afin d’évaluer l’efficacité des méthodes utilisées et proposer des pistes d’amélioration.
+
+# Méthodologie
+- **Sources de données** :  
+  - `bioagresseurs` : type, culture hôte, fréquence.  
+  - `traitements` : dose, volume de bouillie, efficacité à 7 et 14 jours, coût.  
+  - `observations` : taux d’infestation, sévérité.  
+
+- **Outils statistiques** : R et packages (`dplyr`, `ggplot2`, `FactoMineR`, `agricolae`).  
+
+- **Analyses réalisées** :  
+  - Statistiques descriptives (fréquences, distributions).  
+  - Tests paramétriques (ANOVA, Newman–Keuls).  
+  - Analyses multivariées (ACP).  
+  - Visualisations (barplots, histogrammes, camemberts, courbes temporelles).
+
+# Résultats
+
+## Bioagresseurs
+- Répartition par type : les insectes et champignons sont les plus fréquents.  
+- Exemple de visuel :  
+
+```{r fig.width=6, fig.height=6}
+freq <- table(bioagresseurs$type_bioagresseur)
+pie(freq,
+    main = "Répartition des bioagresseurs par type",
+    col = rainbow(length(freq)))
