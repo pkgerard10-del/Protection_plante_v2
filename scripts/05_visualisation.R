@@ -102,6 +102,27 @@ fviz_pca_var(res_pca,
              repel = TRUE,              # évite le chevauchement des labels
              title = "Cercle des corrélations - ACP")
 
+library(FactoMineR)
+library(factoextra)
+
+## ACP sur les variables quantitatives
+donnees <- traitements[, c("dose_L_ha", "volume_bouillie_L_ha",
+                           "efficacite_7j_pct", "efficacite_14j_pct",
+                           "cout_fcfa_ha")]
+
+res_pca <- PCA(donnees, scale.unit = TRUE, graph = FALSE)
+
+# Cercle des corrélations stylisé
+fviz_pca_var(res_pca,
+             col.var = "cos2",                     # couleur selon qualité de représentation
+             gradient.cols = c("red","yellow","green"), # dégradé de couleurs
+             repel = TRUE,                         # évite chevauchement des labels
+             title = "Cercle des corrélations - ACP")
+
+
+
+
+
 
 
 
